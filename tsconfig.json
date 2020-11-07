@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ionic-stripe-checkout": [
+        "dist/ionic-stripe-checkout/ionic-stripe-checkout",
+        "dist/ionic-stripe-checkout"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

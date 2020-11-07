@@ -1,0 +1,58 @@
+<div [formGroup]="cardForm">
+  <ion-item lines="none" class="item__info-card">
+    <ion-label position="stacked">Informations de la carte</ion-label>
+    <ion-input
+      class="input__card-number"
+      [formControl]="cardNumber"
+      (ionChange)="maskCardNumber($event)"
+    ></ion-input>
+    <img *ngIf="cardLogo" [src]="cardLogo">
+  </ion-item>
+
+  <ion-row class="row__expire-cvc">
+    <ion-col size="6">
+      <ion-input
+        class="input__expire-cvc"
+        [formControl]="cardExpire"
+        (ionChange)="maskCardExpire($event)"
+      ></ion-input>
+    </ion-col>
+    <ion-col size="6">
+      <ion-input
+        class="input__expire-cvc"
+        [formControl]="cardCVC"
+        (ionChange)="maskCardCVC($event)"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-item lines="none" class="item__cardholder-name">
+    <ion-label position="stacked">Nom du titulaire de la carte</ion-label>
+    <ion-input [formControl]="cardHolderName"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none" class="item__cardholder-country">
+    <ion-label position="stacked">Pays ou région</ion-label>
+    <ion-input
+      [readonly]="true"
+      (click)="onChooseCountry()"
+      [value]="countryChoosed"
+    ></ion-input>
+    <ion-icon
+      name="chevron-down-outline"
+      slot="end"
+      (click)="onChooseCountry()"
+    ></ion-icon>
+  </ion-item>
+
+  <ion-button
+    [disabled]="cardForm.invalid"
+    class="button__pay"
+    mode="ios"
+    expand="full"
+    shape="round"
+    (click)="onCheckOut()"
+  >
+    Payer
+  </ion-button>
+</div>
