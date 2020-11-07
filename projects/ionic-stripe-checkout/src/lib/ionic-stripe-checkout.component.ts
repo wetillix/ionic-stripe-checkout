@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormGroup,
   AbstractControl,
@@ -25,8 +25,11 @@ export class IonicStripeCheckoutComponent implements OnInit {
   cardCVC: AbstractControl;
   cardHolderName: AbstractControl;
   countryChoosed: string;
-  cardLogo: string = "";
+  cardLogo: string = '';
+  isPaymentLoading: boolean = false;
 
+  @Input() amount: string;
+  @Input() currency: string;
   @Output() checkout = new EventEmitter<
     ICreatePaymentCharge | HttpErrorResponse
   >();
@@ -37,9 +40,22 @@ export class IonicStripeCheckoutComponent implements OnInit {
     private alertController: AlertController
   ) {
     this.cardForm = this.formBuilder.group({
-      cardNumber: [null, [Validators.required]],
-      cardExpire: [null, [Validators.required]],
-      cardCVC: [null, [Validators.required]],
+      cardNumber: [
+        null,
+        [
+          Validators.required,
+          Validators.maxLength(19),
+          Validators.minLength(19),
+        ],
+      ],
+      cardExpire: [
+        null,
+        [Validators.required, Validators.minLength(5), Validators.maxLength(5)],
+      ],
+      cardCVC: [
+        null,
+        [Validators.required, Validators.minLength(3), Validators.maxLength(3)],
+      ],
       cardHolderName: [null, [Validators.required]],
     });
 
@@ -52,6 +68,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
   ngOnInit() {}
 
   onCheckOut() {
+    this.isPaymentLoading = true;
     const paymentCard: ICard = {
       cardCVC: this.cardCVC.value,
       cardMonth: this.cardExpire.value.split('/')[0],
@@ -64,21 +81,24 @@ export class IonicStripeCheckoutComponent implements OnInit {
       (createTokenCardResponse: ICreateTokenCard) => {
         this.ionicStripeCheckoutService
           .onConfirmPayment({
-            amount: '1000',
-            currency: 'eur',
+            amount: (Number(this.amount) * 100).toString(),
+            currency: this.currency,
             source: createTokenCardResponse['id'],
           })
           .subscribe(
             (confirmPaymentResponse) => {
+              this.isPaymentLoading = false;
               this.checkout.emit(confirmPaymentResponse);
             },
             (error: HttpErrorResponse) => {
               this.checkout.emit(error);
+              this.isPaymentLoading = false;
             }
           );
       },
       (error: HttpErrorResponse) => {
         this.checkout.emit(error);
+        this.isPaymentLoading = false;
       }
     );
   }
@@ -98,13 +118,12 @@ export class IonicStripeCheckoutComponent implements OnInit {
       inputs: inputs,
       buttons: [
         {
-          text: 'Annuler',
+          text: 'Cancel',
           role: 'cancel',
         },
         {
-          text: 'Confirmer',
+          text: 'OK',
           handler: (data) => {
-            console.log('Confirm Okay', data);
             this.countryChoosed = data;
           },
         },
@@ -121,7 +140,10 @@ export class IonicStripeCheckoutComponent implements OnInit {
     this.cardNumber.setValue(this.maskStringCardNumber(inputTxt));
 
     const cardType = this.getCardType(this.cardNumber.value);
-    this.cardLogo = '../assets/images/' + cardType + '.png';
+    this.cardLogo =
+      'https://res.cloudinary.com/dqwudn0fq/image/upload/v1604747715/' +
+      cardType +
+      '.png';
   }
 
   maskStringCardNumber(inputTxt) {

@@ -18,7 +18,7 @@ div {
       display: block;
       position: absolute;
       right: 24px;
-      top: 32px;
+      top: 38px;
     }
   }
 
@@ -83,5 +83,11 @@ div {
     width: 90%;
     display: block;
     margin: 7% auto;
+
+    ion-spinner {
+      display: block;
+      position: absolute;
+      right: -15px;
+    }
   }
 }

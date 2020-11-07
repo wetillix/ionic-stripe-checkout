@@ -1,12 +1,21 @@
 <div [formGroup]="cardForm">
   <ion-item lines="none" class="item__info-card">
-    <ion-label position="stacked">Informations de la carte</ion-label>
+    <ion-label position="stacked">Card Informations</ion-label>
     <ion-input
       class="input__card-number"
       [formControl]="cardNumber"
       (ionChange)="maskCardNumber($event)"
+      minlength="19"
+      maxlength="19"
+      placeholder="1234 1234 1234 1234"
     ></ion-input>
-    <img *ngIf="cardLogo" [src]="cardLogo">
+    <img
+      *ngIf="
+        cardLogo !==
+        'https://res.cloudinary.com/dqwudn0fq/image/upload/v1604747715/.png'
+      "
+      [src]="cardLogo"
+    />
   </ion-item>
 
   <ion-row class="row__expire-cvc">
@@ -15,6 +24,9 @@
         class="input__expire-cvc"
         [formControl]="cardExpire"
         (ionChange)="maskCardExpire($event)"
+        minlength="5"
+        maxlength="5"
+        placeholder="MM/AA"
       ></ion-input>
     </ion-col>
     <ion-col size="6">
@@ -22,17 +34,20 @@
         class="input__expire-cvc"
         [formControl]="cardCVC"
         (ionChange)="maskCardCVC($event)"
+        maxlength="3"
+        minlength="3"
+        placeholder="CVC"
       ></ion-input>
     </ion-col>
   </ion-row>
 
   <ion-item lines="none" class="item__cardholder-name">
-    <ion-label position="stacked">Nom du titulaire de la carte</ion-label>
+    <ion-label position="stacked">Name of the card holder</ion-label>
     <ion-input [formControl]="cardHolderName"></ion-input>
   </ion-item>
 
   <ion-item lines="none" class="item__cardholder-country">
-    <ion-label position="stacked">Pays ou région</ion-label>
+    <ion-label position="stacked">Country or region</ion-label>
     <ion-input
       [readonly]="true"
       (click)="onChooseCountry()"
@@ -46,13 +61,15 @@
   </ion-item>
 
   <ion-button
-    [disabled]="cardForm.invalid"
+    [disabled]="cardForm.invalid || isPaymentLoading"
     class="button__pay"
     mode="ios"
     expand="full"
     shape="round"
     (click)="onCheckOut()"
   >
-    Payer
+    Pay {{ amount | currency: currency:"symbol-narrow" }}
+
+    <ion-spinner name="bubbles" *ngIf="isPaymentLoading"></ion-spinner>
   </ion-button>
 </div>
