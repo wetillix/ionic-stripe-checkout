@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/vy-group/ionic-stripe-checkout/issues"
   },
+  "private": "false",
   "keywords": [
     "Ionic",
     "Ionic 4",
