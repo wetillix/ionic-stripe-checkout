@@ -1,6 +1,6 @@
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicStripeCheckoutComponent } from './ionic-stripe-checkout.component';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,18 +13,29 @@ export interface LibConfig {
 export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
 
 @NgModule({
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, IonicModule],
   declarations: [IonicStripeCheckoutComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    IonicModule,
-  ],
   exports: [IonicStripeCheckoutComponent],
 })
 export class IonicStripeCheckoutModule {
-  static forRoot(config: LibConfig): ModuleWithProviders {
+  static forRoot(
+    config: LibConfig
+  ): ModuleWithProviders<IonicStripeCheckoutModule> {
+    return {
+      ngModule: IonicStripeCheckoutModule,
+      providers: [
+        IonicStripeCheckoutService,
+        {
+          provide: LibConfigService,
+          useValue: config,
+        },
+      ],
+    };
+  }
+
+  static forChild(
+    config: LibConfig
+  ): ModuleWithProviders<IonicStripeCheckoutModule> {
     return {
       ngModule: IonicStripeCheckoutModule,
       providers: [

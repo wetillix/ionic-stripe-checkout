@@ -14,7 +14,7 @@ import { ICreatePaymentCharge } from './models/ipayment-charge';
 import { ICreateTokenCard } from './models/itoken';
 
 @Component({
-  selector: 'ionic-stripe-checkout',
+  selector: 'ion-stripe-checkout',
   templateUrl: './ionic-stripe-checkout.component.html',
   styleUrls: ['./ionic-stripe-checkout.component.scss'],
 })

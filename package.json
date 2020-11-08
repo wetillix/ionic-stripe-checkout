@@ -1,6 +1,26 @@
 {
-  "name": "ionic-stripe-checkout",
-  "version": "0.0.0",
+  "name": "@vyconsulting/ionic-stripe-checkout",
+  "version": "0.0.4",
+  "description": "A simple Ionic 5 Stripe Checkout component using Angular.",
+  "author": "Vyconsulting",
+  "license": "MIT",
+  "homepage": "https://github.com/vy-group/ionic-stripe-checkout#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vy-group/ionic-stripe-checkout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vy-group/ionic-stripe-checkout/issues"
+  },
+  "keywords": [
+    "Ionic",
+    "Ionic 4",
+    "Ionic 5",
+    "Angular",
+    "Stripe",
+    "Checkout",
+    "Component"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +29,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~9.1.11",
     "@angular/common": "~9.1.11",

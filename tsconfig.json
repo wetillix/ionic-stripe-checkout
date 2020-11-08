@@ -11,14 +11,16 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
+    "typeRoots": ["node_modules/@types"],
     "paths": {
-      "ionic-stripe-checkout": [
-        "dist/ionic-stripe-checkout/ionic-stripe-checkout",
-        "dist/ionic-stripe-checkout"
+      "@vyconsulting/ionic-stripe-checkout": [
+        "dist/ionic-stripe-checkout",
+        "projects/ionic-stripe-checkout/src"
+      ],
+      "@vyconsulting/ionic-stripe-checkout/*": [
+        "dist/ionic-stripe-checkout/*",
+        "projects/ionic-stripe-checkout/*"
       ]
     }
   },

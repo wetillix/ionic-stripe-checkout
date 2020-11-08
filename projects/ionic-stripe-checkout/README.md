@@ -1,24 +1,138 @@
-# IonicStripeCheckout
+<h1 align="center">Ionic Stripe Checkout</h1>
+<p>
+  <img src="https://img.shields.io/badge/version-0.0.3-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/vy-group/ionic-stripe-checkout#readme">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
+  </a>
+  <a href="https://github.com/RodainaMohamed/ionic-rating/graphs/commit-activity">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
+  </a>
+  <a href="https://github.com/RodainaMohamed/ionic-rating/blob/master/LICENSE">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
+  </a>
+</p>
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
+> A simple Ionic 5 Stripe Checkout component using Angular.
 
-## Code scaffolding
+<!-- ### 🏠 [Homepage](https://github.com/vy-group/ionic-stripe-checkout) -->
 
-Run `ng generate component component-name --project ionic-stripe-checkout` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ionic-stripe-checkout`.
-> Note: Don't forget to add `--project ionic-stripe-checkout` or else it will be added to the default project in your `angular.json` file. 
+## 📝 Table of Contents
 
-## Build
+- [Prerequisites](#prerequisites)
+- [Install](#install)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Author](#author)
+- [Contributing](#contributing)
+- [Show your support](#support)
+- [License](#license)
 
-Run `ng build ionic-stripe-checkout` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ✅ Prerequisites <a name = "prerequisites"></a>
 
-## Publishing
+The current version of the library is compatible with Ionic 4.
 
-After building your library with `ng build ionic-stripe-checkout`, go to the dist folder `cd dist/ionic-stripe-checkout` and run `npm publish`.
+## ⬇️ Install <a name = "install"></a>
 
-## Running unit tests
+Using npm
 
-Run `ng test ionic-stripe-checkout` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```sh
+npm install --save @vyconsulting/ionic-stripe-checkout
+```
 
-## Further help
+Using yarn
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```sh
+yarn add @vyconsulting/ionic-stripe-checkout
+```
+
+## 🛠 Setup <a name = "setup"></a>
+
+Once installed you need to import our module firstly in `AppModule` :
+
+```js
+import { IonicStripeCheckoutModule } from '@vyconsulting/ionic-stripe-checkout';
+
+@NgModule({
+  ...
+  imports: [IonicStripeCheckoutModule.forRoot({
+    stripe_secret_key: "YOUR_STRIPE_SECRET_KEY",
+  }), ...],
+  ...
+})
+export class AppModule {
+}
+```
+
+After do this, in your page where you want to use this component, you will do this:
+
+```js
+import { IonicStripeCheckoutModule } from '@vyconsulting/ionic-stripe-checkout';
+
+@NgModule({
+  ...
+  imports: [IonicStripeCheckoutModule, ...],
+  ...
+})
+export class YourModule {
+}
+```
+
+## Usage <a name = "usage"></a>
+
+Include the component on page template, like the example below:
+
+```
+  <ion-stripe-checkout
+    [amount]="100"
+    [currency]="'EUR'"
+    (checkout)="onPay($event)"
+  >
+  </ion-stripe-checkout>
+```
+
+In your `tsconfig.json` file, if you use `Angular Language Service` extension, add this line :
+
+```
+{
+      "compilerOptions": {
+       .
+       .
+       .
+        "paths": {
+          "@vyconsulting/ionic-stripe-checkout": ["node_modules/@vyconsulting/ionic-stripe-checkout"]
+        },
+```
+
+### API
+
+### Properties
+
+- amount: `number` it is the price of your product.
+- currency: `string` it is the currency of your price. Check [Stripe Currency Normalized](https://stripe.com/docs/currencies)
+
+### Events
+
+- checkout: `EventEmitter<ICreatePaymentCharge | HttpErrorResponse>, the only event dedicated to payment. When the payment is successful, it returns all informations about user checkout. Otherwise it returns HttpErrorResponse from HttpClient.`
+
+## Features which coming soon
+
+- [ ] Integrate 3D Secure payment
+
+## Author <a name = "author"></a>
+
+👤 **Vyconsulting**
+
+- Github: [@vy-group](https://github.com/vy-group)
+
+## 🤝 Contributing <a name = "contributing"></a>
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/vy-group/ionic-stripe-checkout/issues).
+
+## Show your support <a name = "support"></a>
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License <a name = "license"></a>
+
+Copyright © 2020 [Vyconsulting](https://github.com/vy-group).<br />
+This project is [MIT](https://github.com/vy-group/ionic-stripe-checkout/blob/master/LICENSE) licensed.
