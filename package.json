@@ -29,7 +29,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": false,
   "dependencies": {
     "@angular/animations": "~9.1.11",
     "@angular/common": "~9.1.11",
