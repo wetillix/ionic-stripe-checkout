@@ -1,6 +1,6 @@
 {
   "name": "@vyconsulting/ionic-stripe-checkout",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "A simple Ionic 5 Stripe Checkout component using Angular.",
   "author": "Vyconsulting",
   "license": "MIT",
@@ -12,7 +12,6 @@
   "bugs": {
     "url": "https://github.com/vy-group/ionic-stripe-checkout/issues"
   },
-  "private": "false",
   "keywords": [
     "Ionic",
     "Ionic 4",

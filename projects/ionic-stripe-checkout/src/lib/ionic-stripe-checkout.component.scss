@@ -23,14 +23,15 @@ div {
   }
 
   .row__expire-cvc {
-    margin-top: -6px;
+    margin-top: -17px;
+    padding: 11px;
+
     ion-col:nth-child(1) {
       .input__expire-cvc {
         border-bottom-left-radius: 6px;
         border: 1px solid #e0e0e0;
         --padding-start: 16px;
-        width: 96%;
-        margin-left: 11px;
+        width: calc(100% + 11px);
       }
     }
 
@@ -39,8 +40,7 @@ div {
         border-bottom-right-radius: 6px;
         border: 1px solid #e0e0e0;
         --padding-start: 16px;
-        width: 97%;
-        margin-left: -6px;
+        width: 100%;
       }
     }
   }
@@ -80,7 +80,7 @@ div {
 
   .button__pay {
     --border-radius: 6px;
-    width: 90%;
+    width: 93%;
     display: block;
     margin: 7% auto;
 
