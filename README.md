@@ -1,6 +1,6 @@
 <h1 align="center">Ionic Stripe Checkout</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-0.0.6-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-0.0.7-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/vy-group/ionic-stripe-checkout#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
@@ -29,7 +29,7 @@
 
 ## ✅ Prerequisites <a name = "prerequisites"></a>
 
-The current version of the library is compatible with Ionic 4.
+The current version of the library is compatible with Ionic 4 and Ionic 5.
 
 ## ⬇️ Install <a name = "install"></a>
 
@@ -123,6 +123,21 @@ In your `tsconfig.json` file, if you use `Angular Language Service` extension, a
 👤 **Vyconsulting**
 
 - Github: [@vy-group](https://github.com/vy-group)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/amilamen"><img src="https://avatars1.githubusercontent.com/u/46297789?s=400&u=03563203ec0290dd65dded1ad75c4c5e4adb7be4&v=4" width="100px;" alt=""/><br /><sub><b>amilamen</b></sub></a><br /><a href="https://github.com/vy-group/ionic-stripe-checkout/commits?author=amilamen" title="Code">💻</a></td>
+  </tr>
+</table>
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
 
 ## 🤝 Contributing <a name = "contributing"></a>
 
