@@ -32,19 +32,4 @@ export class IonicStripeCheckoutModule {
       ],
     };
   }
-
-  static forChild(
-    config: LibConfig
-  ): ModuleWithProviders<IonicStripeCheckoutModule> {
-    return {
-      ngModule: IonicStripeCheckoutModule,
-      providers: [
-        IonicStripeCheckoutService,
-        {
-          provide: LibConfigService,
-          useValue: config,
-        },
-      ],
-    };
-  }
 }
