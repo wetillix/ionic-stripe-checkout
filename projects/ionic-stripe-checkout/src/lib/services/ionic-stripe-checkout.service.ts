@@ -1,20 +1,26 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LibConfigService, LibConfig } from '../public-api';
+import { LibConfigService, LibConfig } from '../../public-api';
 import {
   URL_STRIPE_CHARGE_CARD,
   URL_STRIPE_CREATE_TOKEN,
-} from './constants/constants';
-import { ICard } from './models/icard';
-import { ICreatePaymentCharge, IPaymentCharge } from './models/ipayment-charge';
-import { ICreateTokenCard } from './models/itoken';
+} from '../constants/constants';
+import { ICard } from '../models/icard';
+import {
+  ICreatePaymentCharge,
+  IPaymentCharge,
+} from '../models/ipayment-charge';
+import { ICreateTokenCard } from '../models/itoken';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IonicStripeCheckoutService {
-  stripeKey = this.config.stripe_secret_key;
+  stripeSecretKey = this.config.stripe_secret_key;
+  stripePublishableKey = this.config.stripe_publishable_key;
+  urlCreateToken = this.config.url_token_card;
+  urlCreatePayment = this.config.url_create_payment;
   headers: HttpHeaders;
 
   constructor(
@@ -24,7 +30,7 @@ export class IonicStripeCheckoutService {
     this.headers = new HttpHeaders();
     this.headers = this.headers.append(
       'Authorization',
-      `Bearer ${this.stripeKey}`
+      `Bearer ${this.stripeSecretKey}`
     );
     this.headers = this.headers.append(
       'Content-Type',
@@ -64,6 +70,19 @@ export class IonicStripeCheckoutService {
           source: paymentCharge.source,
         },
       }
+    );
+  }
+
+  onCreateTokenPaymentFromServer(card: ICard): Observable<ICreateTokenCard> {
+    return this.httpClient.post<ICreateTokenCard>(this.urlCreateToken, card);
+  }
+
+  onConfirmPaymentFromServer(
+    paymentCharge: IPaymentCharge
+  ): Observable<ICreatePaymentCharge> {
+    return this.httpClient.post<ICreatePaymentCharge>(
+      this.urlCreatePayment,
+      paymentCharge
     );
   }
 }

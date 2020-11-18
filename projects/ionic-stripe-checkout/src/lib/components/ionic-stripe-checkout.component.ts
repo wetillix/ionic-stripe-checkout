@@ -7,11 +7,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
-import { countryList } from './constants/country';
-import { IonicStripeCheckoutService } from './ionic-stripe-checkout.service';
-import { ICard } from './models/icard';
-import { ICreatePaymentCharge } from './models/ipayment-charge';
-import { ICreateTokenCard } from './models/itoken';
+import { countryList } from '../constants/country';
+import { IonicStripeCheckoutService } from '../services/ionic-stripe-checkout.service';
+import { ICard } from '../models/icard';
+import { ICreatePaymentCharge } from '../models/ipayment-charge';
+import { ICreateTokenCard } from '../models/itoken';
 
 @Component({
   selector: 'ion-stripe-checkout',
@@ -27,11 +27,12 @@ export class IonicStripeCheckoutComponent implements OnInit {
   countryChoosed: string;
   cardLogo: string = '';
   isPaymentLoading: boolean = false;
+  stripe: any;
 
   @Input() amount: string;
   @Input() currency: string;
   @Output() checkout = new EventEmitter<
-    ICreatePaymentCharge | HttpErrorResponse
+    ICreatePaymentCharge | HttpErrorResponse | string
   >();
 
   constructor(
@@ -77,30 +78,72 @@ export class IonicStripeCheckoutComponent implements OnInit {
       cardHolderName: this.cardHolderName.value,
       cardCountry: this.countryChoosed,
     };
-    this.ionicStripeCheckoutService.onCreateTokenCard(paymentCard).subscribe(
-      (createTokenCardResponse: ICreateTokenCard) => {
+
+    if (this.ionicStripeCheckoutService.stripePublishableKey) {
+      if (this.ionicStripeCheckoutService.urlCreatePayment) {
+        this.checkout.emit(
+          'Your URL for create payment is not present in forRoot configuration.'
+        );
+        return;
+      } else if (this.ionicStripeCheckoutService.urlCreateToken) {
+        this.checkout.emit(
+          'Your URL for create token is not present in forRoot configuration.'
+        );
+        return;
+      } else {
         this.ionicStripeCheckoutService
-          .onConfirmPayment({
-            amount: (Number(this.amount) * 100).toString(),
-            currency: this.currency,
-            source: createTokenCardResponse['id'],
-          })
+          .onCreateTokenPaymentFromServer(paymentCard)
           .subscribe(
-            (confirmPaymentResponse) => {
-              this.isPaymentLoading = false;
-              this.checkout.emit(confirmPaymentResponse);
+            (createTokenCardResponse: ICreateTokenCard) => {
+              this.ionicStripeCheckoutService
+                .onConfirmPaymentFromServer({
+                  amount: (Number(this.amount) * 100).toString(),
+                  currency: this.currency,
+                  source: createTokenCardResponse.id,
+                })
+                .subscribe(
+                  (confirmPaymentResponse) => {
+                    this.isPaymentLoading = false;
+                    this.checkout.emit(confirmPaymentResponse);
+                  },
+                  (error: HttpErrorResponse) => {
+                    this.checkout.emit(error);
+                    this.isPaymentLoading = false;
+                  }
+                );
             },
             (error: HttpErrorResponse) => {
               this.checkout.emit(error);
               this.isPaymentLoading = false;
             }
           );
-      },
-      (error: HttpErrorResponse) => {
-        this.checkout.emit(error);
-        this.isPaymentLoading = false;
       }
-    );
+    } else {
+      this.ionicStripeCheckoutService.onCreateTokenCard(paymentCard).subscribe(
+        (createTokenCardResponse: ICreateTokenCard) => {
+          this.ionicStripeCheckoutService
+            .onConfirmPayment({
+              amount: (Number(this.amount) * 100).toString(),
+              currency: this.currency,
+              source: createTokenCardResponse['id'],
+            })
+            .subscribe(
+              (confirmPaymentResponse) => {
+                this.isPaymentLoading = false;
+                this.checkout.emit(confirmPaymentResponse);
+              },
+              (error: HttpErrorResponse) => {
+                this.checkout.emit(error);
+                this.isPaymentLoading = false;
+              }
+            );
+        },
+        (error: HttpErrorResponse) => {
+          this.checkout.emit(error);
+          this.isPaymentLoading = false;
+        }
+      );
+    }
   }
 
   async onChooseCountry() {
