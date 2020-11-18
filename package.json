@@ -1,6 +1,6 @@
 {
   "name": "@vyconsulting/ionic-stripe-checkout",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "A simple Ionic 5 Stripe Checkout component using Angular.",
   "author": "Vyconsulting",
   "license": "MIT",
@@ -40,7 +40,6 @@
     "@angular/router": "~9.1.11",
     "@ionic/angular": "^5.4.3",
     "rxjs": "~6.5.4",
-    "stripe": "^8.120.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
