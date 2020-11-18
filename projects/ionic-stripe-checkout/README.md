@@ -81,7 +81,7 @@ export class YourModule {
 }
 ```
 
-### 🚀 If you want to use it in `production mode`, you can use this example. It's based on Stripe secret key.
+### 🚀 If you want to use it in `production mode`, you can use this example. It's based on Stripe publishable key.
 
 Once installed you need to import our module firstly in `AppModule` :
 
