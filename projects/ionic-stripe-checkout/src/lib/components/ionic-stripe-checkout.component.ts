@@ -11,7 +11,7 @@ import { countryList } from '../constants/country';
 import { IonicStripeCheckoutService } from '../services/ionic-stripe-checkout.service';
 import { ICard } from '../models/icard';
 import { ICreatePaymentCharge } from '../models/ipayment-charge';
-import { ICreateTokenCard } from '../models/itoken';
+import { ICreateTokenCard, IRetrieveToken } from '../models/itoken';
 
 @Component({
   selector: 'ion-stripe-checkout',
@@ -32,7 +32,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
   @Input() amount: string;
   @Input() currency: string;
   @Output() checkout = new EventEmitter<
-    ICreatePaymentCharge | HttpErrorResponse | string
+    ICreatePaymentCharge | HttpErrorResponse | { error: string }
   >();
 
   constructor(
@@ -80,26 +80,28 @@ export class IonicStripeCheckoutComponent implements OnInit {
     };
 
     if (this.ionicStripeCheckoutService.stripePublishableKey) {
-      if (this.ionicStripeCheckoutService.urlCreatePayment) {
-        this.checkout.emit(
-          'Your URL for create payment is not present in forRoot configuration.'
-        );
-        return;
-      } else if (this.ionicStripeCheckoutService.urlCreateToken) {
-        this.checkout.emit(
-          'Your URL for create token is not present in forRoot configuration.'
-        );
-        return;
+      if (!this.ionicStripeCheckoutService.urlCreatePayment) {
+        this.checkout.emit({
+          error:
+            'Your URL for create payment is not present in forRoot configuration.',
+        });
+        this.isPaymentLoading = false;
+      } else if (!this.ionicStripeCheckoutService.urlCreateToken) {
+        this.checkout.emit({
+          error:
+            'Your URL for create token is not present in forRoot configuration.',
+        });
+        this.isPaymentLoading = false;
       } else {
         this.ionicStripeCheckoutService
           .onCreateTokenPaymentFromServer(paymentCard)
           .subscribe(
-            (createTokenCardResponse: ICreateTokenCard) => {
+            (createTokenCardResponse: IRetrieveToken) => {
               this.ionicStripeCheckoutService
                 .onConfirmPaymentFromServer({
                   amount: (Number(this.amount) * 100).toString(),
                   currency: this.currency,
-                  source: createTokenCardResponse.id,
+                  source: createTokenCardResponse.token.id,
                 })
                 .subscribe(
                   (confirmPaymentResponse) => {

@@ -11,7 +11,7 @@ import {
   ICreatePaymentCharge,
   IPaymentCharge,
 } from '../models/ipayment-charge';
-import { ICreateTokenCard } from '../models/itoken';
+import { ICreateTokenCard, IRetrieveToken } from '../models/itoken';
 
 @Injectable({
   providedIn: 'root',
@@ -73,8 +73,8 @@ export class IonicStripeCheckoutService {
     );
   }
 
-  onCreateTokenPaymentFromServer(card: ICard): Observable<ICreateTokenCard> {
-    return this.httpClient.post<ICreateTokenCard>(this.urlCreateToken, card);
+  onCreateTokenPaymentFromServer(card: ICard): Observable<IRetrieveToken> {
+    return this.httpClient.post<IRetrieveToken>(this.urlCreateToken, card);
   }
 
   onConfirmPaymentFromServer(
