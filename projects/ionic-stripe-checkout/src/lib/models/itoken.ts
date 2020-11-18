@@ -35,3 +35,7 @@ interface Card {
 }
 
 interface Metadata {}
+
+export interface IRetrieveToken {
+  token: ICreateTokenCard;
+}
