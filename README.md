@@ -4,11 +4,14 @@
   <a href="https://github.com/vy-group/ionic-stripe-checkout#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
-  <a href="https://github.com/RodainaMohamed/ionic-rating/graphs/commit-activity">
+  <a href="https://github.com/vy-group/ionic-stripe-checkout/graphs/commit-activity">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
   </a>
-  <a href="https://github.com/RodainaMohamed/ionic-rating/blob/master/LICENSE">
+  <a href="https://github.com/vy-group/ionic-stripe-checkout/blob/master/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
+  </a>
+   <a href="https://www.npmjs.com/package/@vyconsulting/ionic-stripe-checkout">
+    <img alt="Total downloads" src="https://img.shields.io/npm/dt/@vyconsulting/ionic-stripe-checkout?style=plastic" target="_blank" />
   </a>
 </p>
 
