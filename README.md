@@ -7,7 +7,7 @@
   <a href="https://github.com/vy-group/ionic-stripe-checkout/graphs/commit-activity">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
   </a>
-  <a href="https://github.com/vy-group/ionic-stripe-checkout/blob/master/LICENSE">
+  <a href="https://github.com/vy-group/ionic-stripe-checkout/blob/main/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
   </a>
    <a href="https://www.npmjs.com/package/@vyconsulting/ionic-stripe-checkout">
