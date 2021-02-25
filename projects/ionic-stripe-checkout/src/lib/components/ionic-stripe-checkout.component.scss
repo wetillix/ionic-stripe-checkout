@@ -18,7 +18,7 @@ div {
       display: block;
       position: absolute;
       right: 24px;
-      top: 38px;
+      top: 45px;
     }
   }
 
@@ -31,9 +31,49 @@ div {
     display: block;
   }
 
-  .row__expire-cvc {
+  .row__expire-cvc-md {
     margin-top: -17px;
     padding: 11px;
+
+    ion-col:nth-child(1) {
+      .input__expire-cvc {
+        border-bottom-left-radius: 6px;
+        border: 1px solid #e0e0e0;
+        --padding-start: 16px;
+        width: calc(100% + 11px);
+      }
+
+      .span__error_card-expiration {
+        font-size: small;
+        font-weight: bolder;
+        color: var(--ion-color-danger);
+        margin-left: 5px;
+        display: block;
+      }
+    }
+
+    ion-col:nth-child(2) {
+      .input__expire-cvc {
+        border-bottom-right-radius: 6px;
+        border: 1px solid #e0e0e0;
+        --padding-start: 16px;
+        width: 100%;
+      }
+
+      .span__error_card-cvc {
+        font-size: small;
+        font-weight: bolder;
+        color: var(--ion-color-danger);
+        margin-left: 5px;
+        display: block;
+      }
+    }
+  }
+
+  .row__expire-cvc-ios {
+    margin-top: -12px;
+    margin-left: 9px;
+    padding: 5.5px;
 
     ion-col:nth-child(1) {
       .input__expire-cvc {

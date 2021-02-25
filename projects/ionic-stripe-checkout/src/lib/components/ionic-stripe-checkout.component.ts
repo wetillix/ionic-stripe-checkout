@@ -170,7 +170,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
       inputs: inputs,
       buttons: [
         {
-          text: 'Cancel',
+          text: this.language === "fr" ? 'Annuler' : 'Cancel',
           role: 'cancel',
         },
         {
@@ -181,7 +181,6 @@ export class IonicStripeCheckoutComponent implements OnInit {
         },
       ],
     });
-
     await alert.present();
   }
 
