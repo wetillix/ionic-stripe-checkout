@@ -70,7 +70,9 @@ export class IonicStripeCheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.platform.is("android") ? this.isAndroid = true : this.isAndroid = false;
+    this.platform.is('android')
+      ? (this.isAndroid = true)
+      : (this.isAndroid = false);
     this.language = this.ionicStripeCheckoutService.language;
   }
 
@@ -173,7 +175,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
       inputs: inputs,
       buttons: [
         {
-          text: this.language === "fr" ? 'Annuler' : 'Cancel',
+          text: this.language === 'fr' ? 'Annuler' : 'Cancel',
           role: 'cancel',
         },
         {
