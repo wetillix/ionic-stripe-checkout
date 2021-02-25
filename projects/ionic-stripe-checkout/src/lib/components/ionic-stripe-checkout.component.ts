@@ -6,7 +6,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { countryList } from '../constants/country';
 import { IonicStripeCheckoutService } from '../services/ionic-stripe-checkout.service';
 import { ICard } from '../models/icard';
@@ -29,6 +29,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
   isPaymentLoading: boolean = false;
   stripe: any;
   language: string;
+  isAndroid: boolean = false;
 
   @Input() amount: string;
   @Input() currency: string;
@@ -38,6 +39,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private platform: Platform,
     private ionicStripeCheckoutService: IonicStripeCheckoutService,
     private alertController: AlertController
   ) {
@@ -68,6 +70,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.platform.is("android") ? this.isAndroid = true : this.isAndroid = false;
     this.language = this.ionicStripeCheckoutService.language;
   }
 

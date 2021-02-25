@@ -33,7 +33,9 @@
           }}</span
         >
 
-        <ion-row class="row__expire-cvc">
+        <ion-row
+          [class]="isAndroid ? 'row__expire-cvc-md' : 'row__expire-cvc-ios'"
+        >
           <ion-col size="6">
             <ion-input
               class="input__expire-cvc"
@@ -104,6 +106,7 @@
           <ion-icon
             name="chevron-down-outline"
             slot="end"
+            [class]="isAndroid ? 'icon-chevron-md' : 'icon-chevron-ios'"
             (click)="onChooseCountry()"
           ></ion-icon>
         </ion-item>
