@@ -1,6 +1,6 @@
 {
   "name": "@vyconsulting/ionic-stripe-checkout",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "description": "A simple Ionic 5 Stripe Checkout component using Angular.",
   "author": "Vyconsulting",
   "license": "MIT",
