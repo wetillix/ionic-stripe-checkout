@@ -21,7 +21,7 @@ export class IonicStripeCheckoutService {
   stripePublishableKey = this.config.stripe_publishable_key;
   urlCreateToken = this.config.url_token_card;
   urlCreatePayment = this.config.url_create_payment;
-  language = this.config.language;
+  language = this.config.language ?? 'en';
   headers: HttpHeaders;
 
   constructor(
