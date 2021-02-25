@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { config, Observable } from 'rxjs';
 import { LibConfigService, LibConfig } from '../../public-api';
 import {
   URL_STRIPE_CHARGE_CARD,
@@ -21,6 +21,7 @@ export class IonicStripeCheckoutService {
   stripePublishableKey = this.config.stripe_publishable_key;
   urlCreateToken = this.config.url_token_card;
   urlCreatePayment = this.config.url_create_payment;
+  language = this.config.language;
   headers: HttpHeaders;
 
   constructor(

@@ -3,7 +3,9 @@
     <ion-row>
       <ion-col offset-md="4" size-md="4">
         <ion-item lines="none" class="item__info-card">
-          <ion-label position="stacked">Card Informations</ion-label>
+          <ion-label position="stacked">{{
+            language === "fr" ? "Informations de la carte" : "Card Informations"
+          }}</ion-label>
           <ion-input
             class="input__card-number"
             [formControl]="cardNumber"
@@ -23,7 +25,12 @@
         <span
           class="span__error_card-number"
           *ngIf="cardNumber.touched && cardNumber.errors"
-          >** Card number is required</span
+        >
+          {{
+            language === "fr"
+              ? "** Le numéro de la carte est obligatoire"
+              : "** Card number is required"
+          }}</span
         >
 
         <ion-row class="row__expire-cvc">
@@ -39,7 +46,11 @@
             <span
               class="span__error_card-expiration"
               *ngIf="cardExpire.touched && cardExpire.errors"
-              >** Card expiration is required</span
+              >{{
+                language === "fr"
+                  ? "** Ce champ est obligatoire"
+                  : "** Card expiration is required"
+              }}</span
             >
           </ion-col>
           <ion-col size="6">
@@ -54,23 +65,37 @@
             <span
               class="span__error_card-cvc"
               *ngIf="cardCVC.touched && cardCVC.errors"
-              >** Card CVC is required</span
+              >{{
+                language === "fr"
+                  ? "** Le CVV est obligatoire"
+                  : "** Card CVC is required"
+              }}</span
             >
           </ion-col>
         </ion-row>
 
         <ion-item lines="none" class="item__cardholder-name">
-          <ion-label position="stacked">Name of the card holder</ion-label>
+          <ion-label position="stacked">{{
+            language === "fr"
+              ? "Nom du titulaire de la carte"
+              : "Name of the card holder"
+          }}</ion-label>
           <ion-input [formControl]="cardHolderName"></ion-input>
         </ion-item>
         <span
           class="span__error_cardholder-name"
           *ngIf="cardHolderName.touched && cardHolderName.errors"
-          >** Card holder name is required</span
+          >{{
+            language === "fr"
+              ? "** Le nom du titulaire de la carte est obligatoire"
+              : "** Card holder name is required"
+          }}</span
         >
 
         <ion-item lines="none" class="item__cardholder-country">
-          <ion-label position="stacked">Country or region</ion-label>
+          <ion-label position="stacked">{{
+            language === "fr" ? "Pays ou région" : "Country or region"
+          }}</ion-label>
           <ion-input
             [readonly]="true"
             (click)="onChooseCountry()"
@@ -91,7 +116,8 @@
           shape="round"
           (click)="onCheckOut()"
         >
-          Pay {{ amount | currency: currency:"symbol-narrow" }}
+          {{ language === "fr" ? "Payer" : "Pay" }}
+          {{ amount | currency: currency:"symbol-narrow" }}
 
           <ion-spinner name="bubbles" *ngIf="isPaymentLoading"></ion-spinner>
         </ion-button>

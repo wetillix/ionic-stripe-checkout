@@ -28,6 +28,7 @@ export class IonicStripeCheckoutComponent implements OnInit {
   cardLogo: string = '';
   isPaymentLoading: boolean = false;
   stripe: any;
+  language: string;
 
   @Input() amount: string;
   @Input() currency: string;
@@ -66,7 +67,9 @@ export class IonicStripeCheckoutComponent implements OnInit {
     this.cardHolderName = this.cardForm.controls.cardHolderName;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.language = this.ionicStripeCheckoutService.language;
+  }
 
   onCheckOut() {
     this.isPaymentLoading = true;
@@ -83,13 +86,17 @@ export class IonicStripeCheckoutComponent implements OnInit {
       if (!this.ionicStripeCheckoutService.urlCreatePayment) {
         this.checkout.emit({
           error:
-            'Your URL for create payment is not present in forRoot configuration.',
+            this.language === 'en'
+              ? 'Your URL for create payment is not present in forRoot configuration.'
+              : "Votre URL pour initialiser le paiemment n'est pas présent dans la configuration forRoot.",
         });
         this.isPaymentLoading = false;
       } else if (!this.ionicStripeCheckoutService.urlCreateToken) {
         this.checkout.emit({
           error:
-            'Your URL for create token is not present in forRoot configuration.',
+            this.language === 'en'
+              ? 'Your URL for create token is not present in forRoot configuration.'
+              : "Votre URL pour initialiser le token n'est pas présent dans la configuration forRoot.",
         });
         this.isPaymentLoading = false;
       } else {

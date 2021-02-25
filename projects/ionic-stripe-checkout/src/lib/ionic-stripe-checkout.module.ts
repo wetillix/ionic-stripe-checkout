@@ -11,6 +11,7 @@ export interface LibConfig {
   stripe_publishable_key?: string;
   url_token_card?: string;
   url_create_payment?: string;
+  language: 'fr' | 'en';
 }
 
 export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
