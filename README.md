@@ -1,6 +1,6 @@
 <h1 align="center">Ionic Stripe Checkout</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-0.2.1-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-0.2.5-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/vy-group/ionic-stripe-checkout#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
@@ -97,6 +97,7 @@ import { IonicStripeCheckoutModule } from '@vyconsulting/ionic-stripe-checkout';
     stripe_publishable_key: "YOUR_STRIPE_PUBLISHABLE_KEY",
     url_create_payment: "http://YOUR_DOMAIN/YOUR_END_POINT_FOR_CREATE_PAYMENT",
     url_token_card: "http://YOUR_DOMAIN/YOUR_END_POINT_FOR_CREATE_TOKEN",
+    language: "en"
   }), ...],
   ...
 })
