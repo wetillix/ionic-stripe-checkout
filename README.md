@@ -231,5 +231,5 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License <a name = "license"></a>
 
-Copyright © 2020 [Vyconsulting](https://github.com/wetillix).<br />
+Copyright © 2020 [Wetillix](https://github.com/wetillix).<br />
 This project is [MIT](https://github.com/wetillix/ionic-stripe-checkout/blob/master/LICENSE) licensed.
