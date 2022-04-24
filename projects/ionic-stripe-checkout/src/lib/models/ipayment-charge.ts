@@ -49,6 +49,9 @@ export interface ICreatePaymentCharge {
   transfer_data?: any;
   transfer_group?: any;
   source: string;
+  card_month?: string;
+  card_year?: string;
+  card_number?: string;
 }
 
 interface Refunds {
