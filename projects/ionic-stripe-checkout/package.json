@@ -1,16 +1,16 @@
 {
   "name": "@vyconsulting/ionic-stripe-checkout",
-  "version": "0.2.17",
+  "version": "0.2.19",
   "description": "A simple Ionic 5 Stripe Checkout component using Angular.",
-  "author": "Vyconsulting",
+  "author": "Wetillix",
   "license": "MIT",
-  "homepage": "https://github.com/vy-group/ionic-stripe-checkout#readme",
+  "homepage": "https://github.com/wetillix/ionic-stripe-checkout#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vy-group/ionic-stripe-checkout.git"
+    "url": "git+https://github.com/wetillix/ionic-stripe-checkout.git"
   },
   "bugs": {
-    "url": "https://github.com/vy-group/ionic-stripe-checkout/issues"
+    "url": "https://github.com/wetillix/ionic-stripe-checkout/issues"
   },
   "keywords": [
     "Ionic",
