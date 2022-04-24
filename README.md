@@ -1,6 +1,6 @@
 <h1 align="center">Ionic Stripe Checkout</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-0.2.17-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-0.2.19-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/wetillix/ionic-stripe-checkout#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
@@ -231,5 +231,5 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License <a name = "license"></a>
 
-Copyright © 2020 [Wetillix](https://github.com/wetillix).<br />
+Copyright © 2022 [Wetillix](https://github.com/wetillix).<br />
 This project is [MIT](https://github.com/wetillix/ionic-stripe-checkout/blob/master/LICENSE) licensed.

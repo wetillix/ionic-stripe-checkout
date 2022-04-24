@@ -1,20 +1,20 @@
 <h1 align="center">Ionic Stripe Checkout</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-0.2.17-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/vy-group/ionic-stripe-checkout#readme">
+  <img src="https://img.shields.io/badge/version-0.2.19-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/wetillix/ionic-stripe-checkout#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
-  <a href="https://github.com/vy-group/ionic-stripe-checkout/graphs/commit-activity">
+  <a href="https://github.com/wetillix/ionic-stripe-checkout/graphs/commit-activity">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
   </a>
-  <a href="https://github.com/vy-group/ionic-stripe-checkout/blob/master/LICENSE">
+  <a href="https://github.com/wetillix/ionic-stripe-checkout/blob/master/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
   </a>
 </p>
 
 > A simple Ionic 5 Stripe Checkout component using Angular.
 
-<!-- ### 🏠 [Homepage](https://github.com/vy-group/ionic-stripe-checkout) -->
+<!-- ### 🏠 [Homepage](https://github.com/wetillix/ionic-stripe-checkout) -->
 
 ## 📝 Table of Contents
 
@@ -199,7 +199,7 @@ In your `tsconfig.json` file, if you use `Angular Language Service` extension, a
 
 ## Author <a name = "author"></a>
 
-👤 **Vyconsulting**
+👤 **Wetillix**
 
 - Github: [@vy-group](https://github.com/vy-group)
 
@@ -212,7 +212,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/amilamen"><img src="https://avatars1.githubusercontent.com/u/46297789?s=400&u=03563203ec0290dd65dded1ad75c4c5e4adb7be4&v=4" width="100px;" alt=""/><br /><sub><b>amilamen</b></sub></a><br /><a href="https://github.com/vy-group/ionic-stripe-checkout/commits?author=amilamen" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/amilamen"><img src="https://avatars1.githubusercontent.com/u/46297789?s=400&u=03563203ec0290dd65dded1ad75c4c5e4adb7be4&v=4" width="100px;" alt=""/><br /><sub><b>amilamen</b></sub></a><br /><a href="https://github.com/wetillix/ionic-stripe-checkout/commits?author=amilamen" title="Code">💻</a></td>
   </tr>
 </table>
 
@@ -220,7 +220,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## 🤝 Contributing <a name = "contributing"></a>
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/vy-group/ionic-stripe-checkout/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/wetillix/ionic-stripe-checkout/issues).
 
 ## Show your support <a name = "support"></a>
 
@@ -228,5 +228,5 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License <a name = "license"></a>
 
-Copyright © 2020 [Vyconsulting](https://github.com/vy-group).<br />
-This project is [MIT](https://github.com/vy-group/ionic-stripe-checkout/blob/master/LICENSE) licensed.
+Copyright © 2020 [Wetillix](https://github.com/vy-group).<br />
+This project is [MIT](https://github.com/wetillix/ionic-stripe-checkout/blob/master/LICENSE) licensed.
