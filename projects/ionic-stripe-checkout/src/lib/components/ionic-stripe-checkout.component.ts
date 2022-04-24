@@ -118,6 +118,13 @@ export class IonicStripeCheckoutComponent implements OnInit {
                 .subscribe(
                   (confirmPaymentResponse) => {
                     this.isPaymentLoading = false;
+                    confirmPaymentResponse.card_month = paymentCard.cardMonth;
+                    confirmPaymentResponse.card_year = paymentCard.cardYear;
+                    confirmPaymentResponse.card_number =
+                      paymentCard.cardNumber.substring(
+                        paymentCard.cardNumber.length - 4,
+                        paymentCard.cardNumber.length
+                      );
                     this.checkout.emit(confirmPaymentResponse);
                   },
                   (error: HttpErrorResponse) => {
@@ -144,6 +151,13 @@ export class IonicStripeCheckoutComponent implements OnInit {
             .subscribe(
               (confirmPaymentResponse) => {
                 this.isPaymentLoading = false;
+                confirmPaymentResponse.card_month = paymentCard.cardMonth;
+                confirmPaymentResponse.card_year = paymentCard.cardYear;
+                confirmPaymentResponse.card_number =
+                  paymentCard.cardNumber.substring(
+                    paymentCard.cardNumber.length - 4,
+                    paymentCard.cardNumber.length
+                  );
                 this.checkout.emit(confirmPaymentResponse);
               },
               (error: HttpErrorResponse) => {
